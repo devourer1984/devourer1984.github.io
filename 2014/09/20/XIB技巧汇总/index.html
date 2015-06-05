@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>XIB技巧汇总 - tinyxx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="由于之前公司偏传统，所以一直使用纯代码写UI，费时费力。正好趁着iOS8的正式发布补充一点autolayout和size classes的知识，顺带收集一些xib的技巧。
+感谢两位大神，原帖地址：代码手写UI，xib和StoryBoard间的博弈，以及Interface Builder的一些小技巧提高Interface Builder高效工作的8个技巧">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XIB技巧汇总">
+<meta property="og:url" content="https://devourer1984.github.io/2014/09/20/XIB技巧汇总/index.html">
+<meta property="og:site_name" content="tinyxx">
+<meta property="og:description" content="由于之前公司偏传统，所以一直使用纯代码写UI，费时费力。正好趁着iOS8的正式发布补充一点autolayout和size classes的知识，顺带收集一些xib的技巧。
+感谢两位大神，原帖地址：代码手写UI，xib和StoryBoard间的博弈，以及Interface Builder的一些小技巧提高Interface Builder高效工作的8个技巧">
+<meta property="og:updated_time" content="2015-06-05T03:38:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="XIB技巧汇总">
+<meta name="twitter:description" content="由于之前公司偏传统，所以一直使用纯代码写UI，费时费力。正好趁着iOS8的正式发布补充一点autolayout和size classes的知识，顺带收集一些xib的技巧。
+感谢两位大神，原帖地址：代码手写UI，xib和StoryBoard间的博弈，以及Interface Builder的一些小技巧提高Interface Builder高效工作的8个技巧">
+  
+  
+  <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+  <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <a id="logo" class="logo" href="/"></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://devourer1984.github.io"></form>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+    <section id="main" class="outer"><article id="post-XIB技巧汇总" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      XIB技巧汇总
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2014/09/20/XIB技巧汇总/" class="article-date">
+  <time datetime="2014-09-20T02:15:17.000Z" itemprop="datePublished">2014-09-20</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS-Autolayout-XIB/">iOS Autolayout XIB</a>
+  </div>
+
+      
+        <div class="article-comment-link-wrap">
+          <a href="https://devourer1984.github.io/2014/09/20/XIB技巧汇总/#disqus_thread" class="article-comment-link">Comments</a>
+        </div>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>由于之前公司偏传统，所以一直使用纯代码写UI，费时费力。正好趁着iOS8的正式发布补充一点autolayout和size classes的知识，顺带收集一些xib的技巧。</p>
+<p>感谢两位大神，原帖地址：<br><a href="http://onevcat.com/2013/12/code-vs-xib-vs-storyboard/" target="_blank" rel="external">代码手写UI，xib和StoryBoard间的博弈，以及Interface Builder的一些小技巧</a><br><a href="http://beyondvincent.com/blog/2014/03/19/18-tips-for-working-effectively-with-interface-builder/" target="_blank" rel="external">提高Interface Builder高效工作的8个技巧</a></p>
+<a id="more"></a>
+<h2 id="同时显示多个outlet窗口">同时显示多个outlet窗口</h2><p>在xib中右键点击一个view就会弹出一个黑色的outlet选择框，通常情况下，做任何其他操作窗口就会消失。但是只要稍稍拖动一下窗口就能保留下来，只能点叉号关闭。</p>
+<h2 id="可视化距离">可视化距离</h2><p>选中一个view，按住option键，再把鼠标移动到其他view上就能显示出这个view到其他view的距离。</p>
+<h2 id="选中底层view">选中底层view</h2><p>在有很多view层叠的时候，很难选中底层view。这时候按下<code>command+shift</code>并右击view，会弹出一个在此位置上所有view的列表。只要命名不一样就很容易快速找到想要的view。</p>
+<h2 id="添加辅助线">添加辅助线</h2><p>选中一个view，按<code>command+shift+-</code>添加水平辅助线，按<code>command+shift+\</code>添加垂直辅助线。删除辅助线的方法也很简单，拖出根view区域即可。</p>
+<h2 id="使view的Size与view中的Content相适应">使view的Size与view中的Content相适应</h2><p>选中任意的一个view，然后Editor-&gt;Size to Fit Content，或者简单的按<code>command+=</code>接着就会按照下面的规则对选中view的Size做出与之Content对应的适应。        </p>
+<ul>
+<li>ImageView/Button的size会设置为图像的原始size        </li>
+<li>Label/Button的size会被设置为与当前text内容相当的尺寸</li>
+<li>parent container view会与其subviews的frames相适应</li>
+</ul>
+<h2 id="Unembed">Unembed</h2><p>将一组view调整层级的时候可以先<code>Editor –&gt; Embed In View</code>放入一个view中以防止相对位置发生变化。</p>
+<h2 id="在不影响subview的位置时给view自由的添加padding">在不影响subview的位置时给view自由的添加padding</h2><p>试图给view添加padding时，默认情况下subview的x和y是不会改变的，如需改变则需要按住<code>command</code>时拖动view的边缘。</p>
+<h2 id="移动不在最前端的view">移动不在最前端的view</h2><p>这时候按下<code>command+shift</code>并右击view，选中后用箭头移动。</p>
+<h2 id="IBOutletCollection排序">IBOutletCollection排序</h2><p>可以在代码里面利用x/y/tag对其做排序后再迭代，但是这样太麻烦。IBOutletCollection的顺序取决于dragged connection的顺序，可以通过右击File’s Owner来查看当前的顺序并更改。</p>
+<h2 id="使用自定义属性">使用自定义属性</h2><p>使用Identity inspector中的User Defined Runtime Attributes(用户自定义运行时属性)在view上设置自定义属性。其实就是通过KVC在runtime的时候去设置值。</p>
+
+      
+    </div>
+  
+    <footer class="article-footer">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS-Autolayout-XIB/">iOS Autolayout XIB</a></li></ul>
+
+    </footer>
+  
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2013/05/07/水果刀/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">水果刀&nbsp;<span>&gt;</span></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 tinyxx&nbsp;
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'FreeTibet2012';
+  
+  var disqus_url = 'https://devourer1984.github.io/2014/09/20/XIB技巧汇总/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
