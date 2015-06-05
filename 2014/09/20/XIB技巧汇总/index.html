@@ -3,21 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>XIB技巧汇总 - tinyxx</title>
+  <title>XIB技巧匯總 - tinyxx</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="由于之前公司偏传统，所以一直使用纯代码写UI，费时费力。正好趁着iOS8的正式发布补充一点autolayout和size classes的知识，顺带收集一些xib的技巧。
-感谢两位大神，原帖地址：代码手写UI，xib和StoryBoard间的博弈，以及Interface Builder的一些小技巧提高Interface Builder高效工作的8个技巧">
+  <meta name="description" content="由於之前公司存在歷史遺留問題，所以壹直使用純代碼佈局UI，費時費力。正好趁著iOS8的正式發布補充壹點autolayout和size classes的知識，順帶收集壹些xib的技巧。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="XIB技巧汇总">
+<meta property="og:title" content="XIB技巧匯總">
 <meta property="og:url" content="https://devourer1984.github.io/2014/09/20/XIB技巧汇总/index.html">
 <meta property="og:site_name" content="tinyxx">
-<meta property="og:description" content="由于之前公司偏传统，所以一直使用纯代码写UI，费时费力。正好趁着iOS8的正式发布补充一点autolayout和size classes的知识，顺带收集一些xib的技巧。
-感谢两位大神，原帖地址：代码手写UI，xib和StoryBoard间的博弈，以及Interface Builder的一些小技巧提高Interface Builder高效工作的8个技巧">
-<meta property="og:updated_time" content="2015-06-05T03:43:08.000Z">
+<meta property="og:description" content="由於之前公司存在歷史遺留問題，所以壹直使用純代碼佈局UI，費時費力。正好趁著iOS8的正式發布補充壹點autolayout和size classes的知識，順帶收集壹些xib的技巧。">
+<meta property="og:updated_time" content="2015-06-05T10:02:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="XIB技巧汇总">
-<meta name="twitter:description" content="由于之前公司偏传统，所以一直使用纯代码写UI，费时费力。正好趁着iOS8的正式发布补充一点autolayout和size classes的知识，顺带收集一些xib的技巧。
-感谢两位大神，原帖地址：代码手写UI，xib和StoryBoard间的博弈，以及Interface Builder的一些小技巧提高Interface Builder高效工作的8个技巧">
+<meta name="twitter:title" content="XIB技巧匯總">
+<meta name="twitter:description" content="由於之前公司存在歷史遺留問題，所以壹直使用純代碼佈局UI，費時費力。正好趁著iOS8的正式發布補充壹點autolayout和size classes的知識，順帶收集壹些xib的技巧。">
   
   
   <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
@@ -58,7 +55,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      XIB技巧汇总
+      XIB技巧匯總
     </h1>
   
 
@@ -81,24 +78,24 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>由于之前公司偏传统，所以一直使用纯代码写UI，费时费力。正好趁着iOS8的正式发布补充一点autolayout和size classes的知识，顺带收集一些xib的技巧。</p>
-<p>感谢两位大神，原帖地址：<br><a href="http://onevcat.com/2013/12/code-vs-xib-vs-storyboard/" target="_blank" rel="external">代码手写UI，xib和StoryBoard间的博弈，以及Interface Builder的一些小技巧</a><br><a href="http://beyondvincent.com/blog/2014/03/19/18-tips-for-working-effectively-with-interface-builder/" target="_blank" rel="external">提高Interface Builder高效工作的8个技巧</a></p>
+        <p>由於之前公司存在歷史遺留問題，所以壹直使用純代碼佈局UI，費時費力。正好趁著iOS8的正式發布補充壹點autolayout和size classes的知識，順帶收集壹些xib的技巧。</p>
 <a id="more"></a>
-<h2 id="同时显示多个outlet窗口">同时显示多个outlet窗口</h2><p>在xib中右键点击一个view就会弹出一个黑色的outlet选择框，通常情况下，做任何其他操作窗口就会消失。但是只要稍稍拖动一下窗口就能保留下来，只能点叉号关闭。</p>
-<h2 id="可视化距离">可视化距离</h2><p>选中一个view，按住option键，再把鼠标移动到其他view上就能显示出这个view到其他view的距离。</p>
-<h2 id="选中底层view">选中底层view</h2><p>在有很多view层叠的时候，很难选中底层view。这时候按下<code>command+shift</code>并右击view，会弹出一个在此位置上所有view的列表。只要命名不一样就很容易快速找到想要的view。</p>
-<h2 id="添加辅助线">添加辅助线</h2><p>选中一个view，按<code>command+shift+-</code>添加水平辅助线，按<code>command+shift+\</code>添加垂直辅助线。删除辅助线的方法也很简单，拖出根view区域即可。</p>
-<h2 id="使view的Size与view中的Content相适应">使view的Size与view中的Content相适应</h2><p>选中任意的一个view，然后Editor-&gt;Size to Fit Content，或者简单的按<code>command+=</code>接着就会按照下面的规则对选中view的Size做出与之Content对应的适应。        </p>
+<p>首先要感謝兩位大神，原帖地址：<br><a href="http://onevcat.com/2013/12/code-vs-xib-vs-storyboard/" target="_blank" rel="external">代碼手寫UI，xib和StoryBoard間的博弈，以及Interface Builder的壹些小技巧</a><br><a href="http://beyondvincent.com/blog/2014/03/19/18-tips-for-working-effectively-with-interface-builder/" target="_blank" rel="external">提高Interface Builder高效工作的8個技巧</a></p>
+<h2 id="同時顯示多個outlet窗口">同時顯示多個outlet窗口</h2><p><del>在xib中右鍵點擊壹個view就會彈出壹個黑色的outlet選擇框，通常情況下，做任何其他操作窗口就會消失</del>（Xcode6下面已經不會自動消失了 這個tip已過期）。<del>但是只要稍稍拖動壹下窗口就能保留下來，只能點叉號關閉。</del></p>
+<h2 id="可視化距離">可視化距離</h2><p>選中壹個view，按住option鍵，再把鼠標移動到其他view上就能顯示出這個view到其他view的距離。</p>
+<h2 id="選中底層view">選中底層view</h2><p>在有很多view層疊的時候，很難選中底層view。這時候按下<code>shift</code>並右擊view，會彈出壹個在此位置上所有view的列表。只要命名不壹樣就很容易快速找到想要的view。</p>
+<h2 id="添加輔助線">添加輔助線</h2><p>選中壹個view，按<code>command+shift+-</code>添加水平輔助線，按<code>command+shift+\</code>添加垂直輔助線。刪除輔助線的方法貌似只有一個，就是拖出根view區域。</p>
+<h2 id="使view的Size與view中的Content相適應">使view的Size與view中的Content相適應</h2><p>選中任意的壹個view，然後Editor-&gt;Size to Fit Content，或者簡單的按<code>command+=</code>接著就會按照下面的規則對選中view的Size做出與之Content對應的適應。</p>
 <ul>
-<li>ImageView/Button的size会设置为图像的原始size        </li>
-<li>Label/Button的size会被设置为与当前text内容相当的尺寸</li>
-<li>parent container view会与其subviews的frames相适应</li>
+<li>ImageView/Button的size會設置為圖像的原始size        </li>
+<li>Label/Button的size會被設置為與當前text內容相當的尺寸</li>
+<li>parent container view會與其subviews的frames相適應</li>
 </ul>
-<h2 id="Unembed">Unembed</h2><p>将一组view调整层级的时候可以先<code>Editor –&gt; Embed In View</code>放入一个view中以防止相对位置发生变化。</p>
-<h2 id="在不影响subview的位置时给view自由的添加padding">在不影响subview的位置时给view自由的添加padding</h2><p>试图给view添加padding时，默认情况下subview的x和y是不会改变的，如需改变则需要按住<code>command</code>时拖动view的边缘。</p>
-<h2 id="移动不在最前端的view">移动不在最前端的view</h2><p>这时候按下<code>command+shift</code>并右击view，选中后用箭头移动。</p>
-<h2 id="IBOutletCollection排序">IBOutletCollection排序</h2><p>可以在代码里面利用x/y/tag对其做排序后再迭代，但是这样太麻烦。IBOutletCollection的顺序取决于dragged connection的顺序，可以通过右击File’s Owner来查看当前的顺序并更改。</p>
-<h2 id="使用自定义属性">使用自定义属性</h2><p>使用Identity inspector中的User Defined Runtime Attributes(用户自定义运行时属性)在view上设置自定义属性。其实就是通过KVC在runtime的时候去设置值。</p>
+<h2 id="Unembed">Unembed</h2><p>將壹組view調整層級的時候可以先<code>Editor –&gt; Embed In View</code>放入壹個view中以防止相對位置發生變化。</p>
+<h2 id="在不影響subview的位置時給view自由的添加padding">在不影響subview的位置時給view自由的添加padding</h2><p>試圖給view添加padding時，默認情況下subview的x和y是不會改變的，如需改變則需要按住<code>command</code>時拖動view的邊緣。</p>
+<h2 id="移動不在最前端的view">移動不在最前端的view</h2><p>這時候按下<code>command+shift</code>並右擊view，選中後用箭頭移動。</p>
+<h2 id="IBOutletCollection排序">IBOutletCollection排序</h2><p>可以在代碼裏面利用x/y/tag對其做排序後再迭代，但是這樣太麻煩。IBOutletCollection的順序取決於dragged connection的順序，可以通過右擊File’s Owner來查看當前的順序並更改。</p>
+<h2 id="使用自定義屬性">使用自定義屬性</h2><p>使用Identity inspector中的User Defined Runtime Attributes(用戶自定義運行時屬性)在view上設置自定義屬性。其實就是通過KVC在runtime的時候去設置值。</p>
 
       
     </div>
