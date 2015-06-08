@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://devourer1984.github.io/2015/06/05/如何正確遍歷字符串/index.html">
 <meta property="og:site_name" content="tinyxx">
 <meta property="og:description" content="如何遍歷字符串，看起來很是簡單。自己遇到過這個問題，發現並不像想像中的那麼簡單。後來在面試中問過很多人，幾乎沒有人能做到”正確”遍歷。">
-<meta property="og:updated_time" content="2015-06-08T09:29:10.000Z">
+<meta property="og:updated_time" content="2015-06-08T09:32:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何"正確"遍歷字符串">
 <meta name="twitter:description" content="如何遍歷字符串，看起來很是簡單。自己遇到過這個問題，發現並不像想像中的那麼簡單。後來在面試中問過很多人，幾乎沒有人能做到”正確”遍歷。">
@@ -99,7 +99,11 @@
     NSString *s = [str substringWithRange:<span class="keyword">range</span>];
     NSLog(@<span class="string">"%@"</span>, s);
 }
-</code></pre><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#123;% codeblock [<span class="string">lang:</span>java] [title] [url] [link text] [<span class="string">start:</span><span class="number">1</span>] [<span class="string">mark:</span>#,#-#] [<span class="string">linenos:</span><span class="literal">true</span>] %&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OOM_Demo</span> &#123;</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="typename">void</span> main(String[] args) &#123;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">final</span> <span class="typename">int</span> length = <span class="number">100</span> * <span class="number">1024</span> * <span class="number">1024</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">			<span class="typename">byte</span>[] b = <span class="keyword">new</span> <span class="typename">byte</span>[length];</span><br><span class="line">			<span class="keyword">for</span>(<span class="typename">int</span> i=<span class="number">0</span>;i&lt;length;i++)&#123;</span><br><span class="line">				b[i] = (<span class="typename">byte</span>) i;</span><br><span class="line">		    &#125;</span><br><span class="line">			</span><br><span class="line">			String s = <span class="keyword">new</span> String(b);</span><br><span class="line">			System.out.println(s);</span><br><span class="line">				</span><br><span class="line">		&#125;<span class="keyword">catch</span>(OutOfMemoryError e)&#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">			<span class="comment">// System.out.println("OutOfMemoryError");</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#123;% endcodeblock %&#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+
+<!--￼0-->
+
+
       
     </div>
   
