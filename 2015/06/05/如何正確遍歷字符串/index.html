@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://devourer1984.github.io/2015/06/05/如何正確遍歷字符串/index.html">
 <meta property="og:site_name" content="tinyxx">
 <meta property="og:description" content="如何遍歷字符串，看起來很是簡單。自己遇到過這個問題，發現並不像想像中的那麼簡單。後來在面試中問過很多人，幾乎沒有人能做到”正確”遍歷。">
-<meta property="og:updated_time" content="2015-06-08T09:42:35.000Z">
+<meta property="og:updated_time" content="2015-06-08T09:43:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何"正確"遍歷字符串">
 <meta name="twitter:description" content="如何遍歷字符串，看起來很是簡單。自己遇到過這個問題，發現並不像想像中的那麼簡單。後來在面試中問過很多人，幾乎沒有人能做到”正確”遍歷。">
@@ -92,14 +92,8 @@
 }
 </code></pre><p>objective﹣C的NSString由unichar(unsigned short)序列組成。問題是並不是所有的字符都是由一個unichar組成，<code>NSString *str = @&quot;123一二三abc&quot;</code> 這種還好，但是遇到<code>NSString *str = @&quot;123一二三1⃣️2⃣️3⃣️&quot;</code>這種情況就悲劇了。原因是1⃣️2⃣️3⃣️分別需要2個unichar。這樣的話，用上面的代碼去遍歷就會亂碼。</p>
 <p>正確的方式是用NSString的 rangeOfComposedCharacterSequenceAtIndex: 方法，返回從參數開始的一個字符的NSRange。使用這個NSRange去遍歷就”正確”了。</p>
-<pre><code>NSRange <span class="keyword">range</span>;
-<span class="keyword">for</span>(<span class="typename">int</span> i=<span class="number">0</span>; i&lt;str.length; i+=<span class="keyword">range</span>.length)
-{
-    <span class="keyword">range</span> = [str rangeOfComposedCharacterSequenceAtIndex:i];
-    NSString *s = [str substringWithRange:<span class="keyword">range</span>];
-    NSLog(@<span class="string">"%@"</span>, s);
-}
-</code></pre><p>sdf</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">NSRange</span> range;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;str<span class="variable">.length</span>; i+=range<span class="variable">.length</span>)</span><br><span class="line">&#123;</span><br><span class="line">    range = [str rangeOfComposedCharacterSequenceAtIndex:i];</span><br><span class="line">    <span class="built_in">NSString</span> *s = [str substringWithRange:range];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>sdf</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">	public class OOM_Demo &#123;</span><br><span class="line"></span><br><span class="line">	public <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">		</span><br><span class="line">		final <span class="keyword">int</span> length = <span class="number">100</span> * <span class="number">1024</span> * <span class="number">1024</span>;</span><br><span class="line">		</span><br><span class="line">		try&#123;</span><br><span class="line">			byte[] b = new byte[length];</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)&#123;</span><br><span class="line">				b[i] = (byte) i;</span><br><span class="line">		    &#125;</span><br><span class="line">			</span><br><span class="line">			String s = new String(b);</span><br><span class="line">			System<span class="variable">.out</span><span class="variable">.println</span>(s);</span><br><span class="line">				</span><br><span class="line">		&#125;catch(OutOfMemoryError e)&#123;</span><br><span class="line">			e<span class="variable">.printStackTrace</span>();</span><br><span class="line">			<span class="comment">// System.out.println("OutOfMemoryError");</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
