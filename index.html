@@ -78,7 +78,6 @@
 <script src="https://gist.github.com/devourer1984/917728c5a1070fa89e75.js"></script>
 
 <p>NSString是UTF-16编码的, 也就是16位的unichar字符的序列. 所以, 一般遍历其每一个字符的方法就是:</p>
-<p>`</p>
 <pre><code>NSRange range;
 <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="keyword">str</span>.length; i+=range.length)
 {
@@ -92,7 +91,8 @@
 {
     unichar ch = [<span class="keyword">str</span> characterAtIndex: i];
 }
-</code></pre><p>`</p>
+</code></pre><p><code>test text
+NSLog(@&quot;%@&quot;, s);</code></p>
 
       
     </div>

@@ -9,11 +9,10 @@
 
 
 NSString是UTF-16编码的, 也就是16位的unichar字符的序列. 所以, 一般遍历其每一个字符的方法就是:
-`
 NSRange range;
 for(int i=0; i&amp;lt;str.length; i+=range.length)
 {
-    range = [str rangeOfComposedCharacterSequenc">
+    range = [str rangeOfComposedCharacterSequenceA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何"正確"遍歷字符串">
 <meta property="og:url" content="https://devourer1984.github.io/2015/06/05/如何正確遍歷字符串/index.html">
@@ -22,23 +21,21 @@ for(int i=0; i&amp;lt;str.length; i+=range.length)
 
 
 NSString是UTF-16编码的, 也就是16位的unichar字符的序列. 所以, 一般遍历其每一个字符的方法就是:
-`
 NSRange range;
 for(int i=0; i&amp;lt;str.length; i+=range.length)
 {
-    range = [str rangeOfComposedCharacterSequenc">
-<meta property="og:updated_time" content="2015-06-08T08:17:11.000Z">
+    range = [str rangeOfComposedCharacterSequenceA">
+<meta property="og:updated_time" content="2015-06-08T08:19:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何"正確"遍歷字符串">
 <meta name="twitter:description" content="如果被問到遍歷字符串，直接想到的就是如下:
 
 
 NSString是UTF-16编码的, 也就是16位的unichar字符的序列. 所以, 一般遍历其每一个字符的方法就是:
-`
 NSRange range;
 for(int i=0; i&amp;lt;str.length; i+=range.length)
 {
-    range = [str rangeOfComposedCharacterSequenc">
+    range = [str rangeOfComposedCharacterSequenceA">
   
   
   <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
@@ -102,7 +99,6 @@ for(int i=0; i&amp;lt;str.length; i+=range.length)
 <script src="https://gist.github.com/devourer1984/917728c5a1070fa89e75.js"></script>
 
 <p>NSString是UTF-16编码的, 也就是16位的unichar字符的序列. 所以, 一般遍历其每一个字符的方法就是:</p>
-<p>`</p>
 <pre><code>NSRange range;
 <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="keyword">str</span>.length; i+=range.length)
 {
@@ -116,7 +112,8 @@ for(int i=0; i&amp;lt;str.length; i+=range.length)
 {
     unichar ch = [<span class="keyword">str</span> characterAtIndex: i];
 }
-</code></pre><p>`</p>
+</code></pre><p><code>test text
+NSLog(@&quot;%@&quot;, s);</code></p>
 
       
     </div>
