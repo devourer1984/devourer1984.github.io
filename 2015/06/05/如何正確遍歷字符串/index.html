@@ -5,37 +5,16 @@
   
   <title>如何&quot;正確&quot;遍歷字符串 - tinyxx</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="如果被問到遍歷字符串，直接想到的就是如下:
-
-
-NSString是UTF-16编码的, 也就是16位的unichar字符的序列. 所以, 一般遍历其每一个字符的方法就是:
-NSRange range;
-for(int i=0; i&amp;lt;str.length; i+=range.length)
-{
-    range = [str rangeOfComposedCharacterSequenceA">
+  <meta name="description" content="如何遍歷字符串，看起來很是簡單。自己遇到過這個問題，發現並不像想像中的那麼簡單。後來在面試中問過很多人，幾乎沒有人能做到”正確”遍歷。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何"正確"遍歷字符串">
 <meta property="og:url" content="https://devourer1984.github.io/2015/06/05/如何正確遍歷字符串/index.html">
 <meta property="og:site_name" content="tinyxx">
-<meta property="og:description" content="如果被問到遍歷字符串，直接想到的就是如下:
-
-
-NSString是UTF-16编码的, 也就是16位的unichar字符的序列. 所以, 一般遍历其每一个字符的方法就是:
-NSRange range;
-for(int i=0; i&amp;lt;str.length; i+=range.length)
-{
-    range = [str rangeOfComposedCharacterSequenceA">
-<meta property="og:updated_time" content="2015-06-08T08:35:36.000Z">
+<meta property="og:description" content="如何遍歷字符串，看起來很是簡單。自己遇到過這個問題，發現並不像想像中的那麼簡單。後來在面試中問過很多人，幾乎沒有人能做到”正確”遍歷。">
+<meta property="og:updated_time" content="2015-06-08T09:29:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何"正確"遍歷字符串">
-<meta name="twitter:description" content="如果被問到遍歷字符串，直接想到的就是如下:
-
-
-NSString是UTF-16编码的, 也就是16位的unichar字符的序列. 所以, 一般遍历其每一个字符的方法就是:
-NSRange range;
-for(int i=0; i&amp;lt;str.length; i+=range.length)
-{
-    range = [str rangeOfComposedCharacterSequenceA">
+<meta name="twitter:description" content="如何遍歷字符串，看起來很是簡單。自己遇到過這個問題，發現並不像想像中的那麼簡單。後來在面試中問過很多人，幾乎沒有人能做到”正確”遍歷。">
   
   
   <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
@@ -95,10 +74,9 @@ for(int i=0; i&amp;lt;str.length; i+=range.length)
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>如果被問到遍歷字符串，直接想到的就是如下:</p>
-<script src="https://gist.github.com/devourer1984/917728c5a1070fa89e75.js"></script>
-
-<p>NSString是UTF-16编码的, 也就是16位的unichar字符的序列. 所以, 一般遍历其每一个字符的方法就是:</p>
+        <p>如何遍歷字符串，看起來很是簡單。自己遇到過這個問題，發現並不像想像中的那麼簡單。<br>後來在面試中問過很多人，幾乎沒有人能做到”正確”遍歷。</p>
+<a id="more"></a>
+<p>如果被問到遍歷字符串，正常的反應就是如下:</p>
 <pre><code>NSRange range;
 <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="keyword">str</span>.length; i+=range.length)
 {
@@ -112,17 +90,16 @@ for(int i=0; i&amp;lt;str.length; i+=range.length)
 {
     unichar ch = [<span class="keyword">str</span> characterAtIndex: i];
 }
-</code></pre><p><code>test text
-NSLog(@&quot;%@&quot;, s);</code></p>
-<pre><code>test <span class="value">text</span>
-<span class="function">NSLog</span>(<span class="at_rule">@<span class="string">"%@"</span>,<span class="preprocessor"> s</span>);</span>
-</code></pre><p>sssss</p>
-<p><code>test text
-NSLog(@&quot;%@&quot;, s);</code></p>
-<blockquote>
-<p>aaa</p>
-</blockquote>
-
+</code></pre><p>objective﹣C的NSString由unichar(unsigned short)序列組成。問題是並不是所有的字符都是由一個unichar組成，<code>NSString *str = @&quot;123一二三abc&quot;</code> 這種還好，但是遇到<code>NSString *str = @&quot;123一二三1⃣️2⃣️3⃣️&quot;</code>這種情況就悲劇了。原因是1⃣️2⃣️3⃣️分別需要2個unichar。這樣的話，用上面的代碼去遍歷就會亂碼。</p>
+<p>正確的方式是用NSString的 rangeOfComposedCharacterSequenceAtIndex: 方法，返回從參數開始的一個字符的NSRange。使用這個NSRange去遍歷就”正確”了。</p>
+<pre><code>NSRange <span class="keyword">range</span>;
+<span class="keyword">for</span>(<span class="typename">int</span> i=<span class="number">0</span>; i&lt;str.length; i+=<span class="keyword">range</span>.length)
+{
+    <span class="keyword">range</span> = [str rangeOfComposedCharacterSequenceAtIndex:i];
+    NSString *s = [str substringWithRange:<span class="keyword">range</span>];
+    NSLog(@<span class="string">"%@"</span>, s);
+}
+</code></pre><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#123;% codeblock [<span class="string">lang:</span>java] [title] [url] [link text] [<span class="string">start:</span><span class="number">1</span>] [<span class="string">mark:</span>#,#-#] [<span class="string">linenos:</span><span class="literal">true</span>] %&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OOM_Demo</span> &#123;</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="typename">void</span> main(String[] args) &#123;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">final</span> <span class="typename">int</span> length = <span class="number">100</span> * <span class="number">1024</span> * <span class="number">1024</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">			<span class="typename">byte</span>[] b = <span class="keyword">new</span> <span class="typename">byte</span>[length];</span><br><span class="line">			<span class="keyword">for</span>(<span class="typename">int</span> i=<span class="number">0</span>;i&lt;length;i++)&#123;</span><br><span class="line">				b[i] = (<span class="typename">byte</span>) i;</span><br><span class="line">		    &#125;</span><br><span class="line">			</span><br><span class="line">			String s = <span class="keyword">new</span> String(b);</span><br><span class="line">			System.out.println(s);</span><br><span class="line">				</span><br><span class="line">		&#125;<span class="keyword">catch</span>(OutOfMemoryError e)&#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">			<span class="comment">// System.out.println("OutOfMemoryError");</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#123;% endcodeblock %&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
   
