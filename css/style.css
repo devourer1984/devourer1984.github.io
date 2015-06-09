@@ -779,8 +779,8 @@ a.article-title:hover,
   font-size: 14px;
   background: #23241f;
   padding: 15px 0;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
   overflow: auto;
   color: #fff;
   line-height: 22.4px;
@@ -797,8 +797,8 @@ a.article-title:hover,
 .article-entry code {
   background: #f2f2f2;
   padding: 0 0.3em;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
   padding: 0.1em 0.3em;
 }
 .article-entry pre {
