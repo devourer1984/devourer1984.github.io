@@ -787,7 +787,7 @@ a.article-title:hover,
 }
 .article-entry .highlight .gutter pre,
 .article-entry .gist .gist-file .gist-data .line-numbers {
-  color: #555;
+  color: #777;
   font-size: 0.85em;
 }
 .article-entry pre,
